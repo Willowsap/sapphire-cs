@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 
 @Component({
@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  enteredValue = '';
-  newPost = this.enteredValue;
+  enteredTitle = '';
+  enteredContent = '';
+  @Output() announcementCreated = new EventEmitter();
 
   constructor() { }
 
@@ -17,8 +18,12 @@ export class HomeComponent implements OnInit {
   }
 
 
-  onAddPost() {
-    this.newPost = this.enteredValue;
+  onAddAnnouncement() {
+    const announcement = {
+      title: this.enteredTitle,
+      content: this.enteredContent
+    };
+    this.announcementCreated.emit(announcement);
   }
 
 }
