@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-a
+
 app.use((req, res, next) => {
   console.log('first middleware');
   next();
